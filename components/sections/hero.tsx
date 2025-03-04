@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
+import Link from "next/link"
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -29,7 +30,7 @@ export default function Hero() {
               Innovate. <span className="text-primary">Code.</span> Transform.
             </h1>
             <p className="text-lg text-muted-foreground max-w-lg">
-              CodeCraft is the premier coding club at our university, dedicated to fostering innovation and technical
+              Abhyudaya is the premier coding club at our university, dedicated to fostering innovation and technical
               excellence. We bring together passionate students from diverse backgrounds to collaborate, learn, and
               build impactful projects that solve real-world problems.
             </p>
@@ -40,9 +41,11 @@ export default function Hero() {
             </p>
             <div className="flex flex-wrap gap-4">
               <Button size="lg">Join Our Community</Button>
+              <Link href="#projects">
               <Button size="lg" variant="outline">
                 Explore Projects
               </Button>
+              </Link>
             </div>
           </motion.div>
 
@@ -54,7 +57,7 @@ export default function Hero() {
           >
             <video ref={videoRef} className="w-full h-full object-cover rounded-xl" autoPlay muted loop playsInline>
               <source
-                src="https://assets.mixkit.co/videos/preview/mixkit-group-of-friends-working-on-a-project-together-4640-large.mp4"
+                src="/intro.mp4"
                 type="video/mp4"
               />
               Your browser does not support the video tag.

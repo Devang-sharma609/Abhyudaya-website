@@ -10,10 +10,10 @@ import { Badge } from "@/components/ui/badge"
 const projects = [
   {
     id: 1,
-    title: "AI Study Assistant",
+    title: "Bus Management",
     description:
       "An AI-powered study assistant that helps students organize their notes, create flashcards, and prepare for exams.",
-    image: "/placeholder.svg?height=400&width=600&text=AI+Study+Assistant",
+    image: "/bus-tracking.svg?height=400&width=600&text=AI+Study+Assistant",
     techStack: ["Python", "TensorFlow", "Flask", "React", "MongoDB"],
     demoUrl: "#",
     githubUrl: "#",
@@ -21,7 +21,7 @@ const projects = [
   },
   {
     id: 2,
-    title: "Campus Connect",
+    title: "NoteBin",
     description:
       "A mobile app that connects students on campus, facilitates event discovery, and enables resource sharing.",
     image: "/placeholder.svg?height=400&width=600&text=Campus+Connect",

@@ -6,6 +6,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Menu, X, Code } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { cn } from "@/lib/utils"
 
 const navLinks = [
@@ -59,7 +60,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
             <Code className="h-6 w-6 text-primary" />
-            <span className="font-bold text-xl">CodeCraft</span>
+            <span className="font-bold text-xl">Abhyudaya</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -74,13 +75,19 @@ export default function Navbar() {
                 {link.name}
               </a>
             ))}
-            <Button size="sm">Join Us</Button>
+            <div className="flex items-center gap-4">
+              <ThemeToggle />
+              <Button size="sm">Join Us</Button>
+            </div>
           </nav>
 
-          {/* Mobile Navigation Toggle */}
-          <button className="md:hidden" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Menu">
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          {/* Mobile Navigation Toggle and Theme Toggle */}
+          <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggle />
+            <button onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Menu">
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
       </div>
 

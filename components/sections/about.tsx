@@ -27,7 +27,7 @@ export default function About() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="space-y-6"
         >
-          <h2 className="text-3xl md:text-4xl font-bold">About CodeCraft</h2>
+          <h2 className="text-3xl md:text-4xl font-bold">About Abhyudaya</h2>
 
           <div className="space-y-4">
             <h3 className="text-xl font-semibold">Our Vision</h3>
@@ -40,7 +40,7 @@ export default function About() {
           <div className="space-y-4">
             <h3 className="text-xl font-semibold">Our Mission</h3>
             <p className="text-muted-foreground">
-              CodeCraft is dedicated to fostering technical excellence and innovation among students through hands-on
+              Abhyudaya is dedicated to fostering technical excellence and innovation among students through hands-on
               learning experiences, industry collaborations, and community-driven projects.
             </p>
           </div>

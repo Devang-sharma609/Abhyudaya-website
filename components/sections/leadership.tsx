@@ -7,11 +7,11 @@ import { Button } from "@/components/ui/button"
 
 const leadershipData = [
   {
-    name: "Dr. Sarah Johnson",
+    name: "Dr. Upendra Dhar",
     role: "Vice Chancellor",
     department: "University Administration",
     image: "/placeholder.svg?height=300&width=300&text=Dr.+Johnson",
-    message: "I am proud to support CodeCraft as they foster innovation and technical excellence among our students.",
+    message: "I am proud to support Abhyudaya as they foster innovation and technical excellence among our students.",
     contact: {
       email: "vc@university.edu",
       phone: "+1 (555) 123-4567",
@@ -23,7 +23,7 @@ const leadershipData = [
     role: "Head of Department",
     department: "Computer Science & Engineering",
     image: "/placeholder.svg?height=300&width=300&text=Prof.+Chen",
-    message: "CodeCraft represents the innovative spirit we aim to cultivate in our department.",
+    message: "Abhyudaya represents the innovative spirit we aim to cultivate in our department.",
     contact: {
       email: "hod.cse@university.edu",
       phone: "+1 (555) 234-5678",
@@ -35,7 +35,7 @@ const leadershipData = [
     role: "Faculty Mentor",
     department: "Computer Science & Engineering",
     image: "/placeholder.svg?height=300&width=300&text=Dr.+Rodriguez",
-    message: "Working with CodeCraft students has been one of the most rewarding experiences of my academic career.",
+    message: "Working with Abhyudaya students has been one of the most rewarding experiences of my academic career.",
     contact: {
       email: "emily.rodriguez@university.edu",
       phone: "+1 (555) 345-6789",
@@ -47,7 +47,7 @@ const leadershipData = [
     role: "Club Coordinator",
     department: "Information Technology",
     image: "/placeholder.svg?height=300&width=300&text=Prof.+Kim",
-    message: "CodeCraft provides a platform for students to apply classroom knowledge to real-world problems.",
+    message: "Abhyudaya provides a platform for students to apply classroom knowledge to real-world problems.",
     contact: {
       email: "david.kim@university.edu",
       phone: "+1 (555) 456-7890",

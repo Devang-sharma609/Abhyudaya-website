@@ -1,38 +1,34 @@
-import type React from "react"
+import "@/app/globals.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "@/components/ui/sonner"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
 export const metadata: Metadata = {
-  title: "CodeCraft - College Coding Club",
-  description: "The premier coding club at our university, dedicated to fostering innovation and technical excellence.",
-  keywords: [
-    "coding club",
-    "programming",
-    "college",
-    "university",
-    "tech",
-    "AI/ML",
-    "web development",
-    "cloud computing",
-  ],
-    generator: 'v0.dev'
+  title: "Abhyudaya - College Coding Club",
+  description: "A coding club where students can learn, collaborate, and build amazing projects together.",
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} font-sans`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+          <Toaster />
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
-
-
-
-import './globals.css'
