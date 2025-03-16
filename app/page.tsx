@@ -7,6 +7,9 @@ import Leadership from "@/components/sections/leadership"
 import Team from "@/components/sections/team"
 import Navbar from "@/components/layout/navbar"
 import Footer from "@/components/layout/footer"
+import Recruitment from "@/components/sections/recruiting"
+import { SHOW_RECRUITMENT } from "@/components/sections/recruiting"
+
 
 export default function Home() {
   return (
@@ -15,6 +18,9 @@ export default function Home() {
       <main>
         <section id="home">
           <Hero />
+        </section>
+        <section id="recruitment" className="bg-muted/50">
+          <Recruitment visible={SHOW_RECRUITMENT} posterSrc="/poster_"/>
         </section>
         <section id="domains" className="py-16 bg-muted/50">
           <Domains />

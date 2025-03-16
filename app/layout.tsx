@@ -7,7 +7,7 @@ import { Toaster } from "@/components/ui/sonner"
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
 export const metadata: Metadata = {
-  title: "Abhyudaya - College Coding Club",
+  title: "Abhyudaya Coding Club",
   description: "A coding club where students can learn, collaborate, and build amazing projects together.",
 }
 

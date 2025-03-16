@@ -9,7 +9,7 @@ const teamMembers = [
     name: "Tanay Nagde",
     role: "President",
     specialization: "AI/ML",
-    image: "/placeholder.svg?height=300&width=300&text=Alex",
+    image: "/Tanay.JPG?height=300&width=300&text=Tanay Nagde",
     social: {
       github: "https://github.com/alexj",
       linkedin: "https://linkedin.com/in/alexj",
@@ -19,7 +19,7 @@ const teamMembers = [
     name: "Pranjal Birla",
     role: "Vice President",
     specialization: "Web Development",
-    image: "/placeholder.svg?height=300&width=300&text=Priya",
+    image: "/Pranjal.JPG?height=300&width=300&text=Pranjal Birla",
     social: {
       github: "https://github.com/priyap",
       linkedin: "https://linkedin.com/in/priyap",
@@ -29,7 +29,7 @@ const teamMembers = [
     name: "Kushagra Rai",
     role: "General Secretary",
     specialization: "Cloud Computing",
-    image: "/placeholder.svg?height=300&width=300&text=Marcus",
+    image: "/Kushagra.JPG?height=300&width=300&text=Kushagra Rai",
     social: {
       github: "https://github.com/marcusc",
       linkedin: "https://linkedin.com/in/marcusc",
@@ -39,27 +39,17 @@ const teamMembers = [
     name: "Ayush Maddhesiya",
     role: "Technical Secretary",
     specialization: "UI/UX Design",
-    image: "/placeholder.svg?height=300&width=300&text=Sophia",
+    image: "/Ayush.JPG?height=300&width=300&text=Ayush Maddhesiya",
     social: {
       github: "https://github.com/sophiar",
       linkedin: "https://linkedin.com/in/sophiar",
     },
   },
   {
-    name: "Nawadha Jadiya",
-    role: "Development Lead",
-    specialization: "Cybersecurity",
-    image: "/placeholder.svg?height=300&width=300&text=James",
-    social: {
-      github: "https://github.com/jamesw",
-      linkedin: "https://linkedin.com/in/jamesw",
-    },
-  },
-  {
     name: "Akash Bais",
     role: "Treasurer",
     specialization: "Mobile Development",
-    image: "/placeholder.svg?height=300&width=300&text=Aisha",
+    image: "/Akash.JPG?height=300&width=300&text=Akash Bais",
     social: {
       github: "https://github.com/aishak",
       linkedin: "https://linkedin.com/in/aishak",
@@ -69,17 +59,27 @@ const teamMembers = [
     name: "Dhwanil Bhawsar",
     role: "Administrative Secretary",
     specialization: "Database Management",
-    image: "/placeholder.svg?height=300&width=300&text=David",
+    image: "/Dhwanil.JPG?height=300&width=300&text=Dhwanil Bhawsar",
     social: {
       github: "https://github.com/davidp",
       linkedin: "https://linkedin.com/in/davidp",
     },
   },
   {
+    name: "Nawadha Jadiya",
+    role: "Development Lead",
+    specialization: "Cybersecurity",
+    image: "/Nawadha.JPG?height=300&width=300&text=Nawadha Jadiya",
+    social: {
+      github: "https://github.com/jamesw",
+      linkedin: "https://linkedin.com/in/jamesw",
+    },
+  },
+  {
     name: "Devang Sharma",
     role: "Managing Lead",
     specialization: "Data Science",
-    image: "/placeholder.svg?height=300&width=300&text=Emma",
+    image: "/Devang.JPG",
     social: {
       github: "https://github.com/emmat",
       linkedin: "https://linkedin.com/in/emmat",
@@ -87,9 +87,9 @@ const teamMembers = [
   },
   {
     name: "Sneha Yadav",
-    role: "Content Lead",
+    role: "Media & Content Lead",
     specialization: "Data Science",
-    image: "/placeholder.svg?height=300&width=300&text=Emma",
+    image: "/Sneha.JPG?height=300&width=300&text=Sneha Yadav",
     social: {
       github: "https://github.com/emmat",
       linkedin: "https://linkedin.com/in/emmat",

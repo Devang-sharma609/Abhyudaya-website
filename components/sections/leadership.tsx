@@ -10,7 +10,7 @@ const leadershipData = [
     name: "Dr. Upendra Dhar",
     role: "Vice Chancellor",
     department: "University Administration",
-    image: "/placeholder.svg?height=300&width=300&text=Dr.+Johnson",
+    image: "/vc.svg?height=300&width=300&text=Dr.+Upinder+Dhar",
     message: "I am proud to support Abhyudaya as they foster innovation and technical excellence among our students.",
     contact: {
       email: "vc@university.edu",
@@ -21,7 +21,7 @@ const leadershipData = [
     name: "Dr. Anand Rajawat",
     role: "Director  Professor",
     department: "University Administration",
-    image: "/placeholder.svg?height=300&width=300&text=Prof.+Chen",
+    image: "/anand-rajavat.png",
     message: "Abhyudaya represents the innovative spirit we aim to cultivate in our department.",
     contact: {
       email: "hod.cse@university.edu",
@@ -32,7 +32,7 @@ const leadershipData = [
     name: "Prof. Avdesh Kumar Sharma",
     role: "Club Coordiantor",
     department: "Computer Science & Engineering",
-    image: "/placeholder.svg?height=300&width=300&text=Dr.+Rodriguez",
+    image: "/avdhesh-kumar.svg?height=300&width=300&text=Dr.+Rodriguez",
     message: "Working with Abhyudaya students has been one of the most rewarding experiences of my academic career.",
     contact: {
       email: "emily.rodriguez@university.edu",
@@ -43,7 +43,7 @@ const leadershipData = [
     name: "Dr. Kamal Borana",
     role: "Faculty Mentor",
     department: "Computer Science & Engineering",
-    image: "/placeholder.svg?height=300&width=300&text=Prof.+Kim",
+    image: "/kamal-borana.svg?height=300&width=300&text=Prof.+Kim",
     message: "Abhyudaya provides a platform for students to apply classroom knowledge to real-world problems.",
     contact: {
       email: "david.kim@university.edu",

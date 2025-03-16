@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { Code, Github, Instagram, Linkedin, Twitter } from "lucide-react"
+import { Code, Github, Instagram, Linkedin} from "lucide-react"
+import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   return (
@@ -15,12 +16,12 @@ export default function Footer() {
               Empowering students to innovate, create, and excel in the world of technology.
             </p>
             <div className="flex space-x-4">
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <Link href="https://github.com/Abhyudaya-SVVV" className="text-muted-foreground hover:text-primary transition-colors">
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Twitter className="h-5 w-5" />
+              <Link href="https://x.com/abhyudaya_club" className="text-muted-foreground hover:text-primary transition-colors">
+                <FaXTwitter  className="h-5 w-5" />
                 <span className="sr-only">Twitter</span>
               </Link>
               <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">

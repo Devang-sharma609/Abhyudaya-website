@@ -14,9 +14,9 @@ export default function About() {
           className="relative rounded-xl overflow-hidden shadow-xl"
         >
           <img
-            src="/placeholder.svg?height=600&width=800&text=College+Campus"
+            src="/Club.JPG?height=600&width=800&text=Club+Team"
             alt="College Campus"
-            className="w-full h-full object-cover"
+            className="w-ful h-full object-cover"
           />
         </motion.div>
 

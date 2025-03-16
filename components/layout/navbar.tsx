@@ -1,18 +1,16 @@
-"use client"
+"use client";
 
-import type React from "react"
-
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { Menu, X, Code } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { ThemeToggle } from "@/components/ui/theme-toggle"
-import { cn } from "@/lib/utils"
+import type React from "react";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { Menu, X, Code } from "lucide-react";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { cn } from "@/lib/utils";
 
 const navLinks = [
   { name: "Home", href: "#home" },
-  { name: "Our Domains", href: "#domains" },
-  { name: "Upcoming Events", href: "#events" },
+  { name: "Domains", href: "#domains" },
+  { name: "Events", href: "#events" },
   { name: "Projects", href: "#projects" },
   { name: "About", href: "#about" },
   { name: "Leadership", href: "#leadership" },
@@ -20,99 +18,110 @@ const navLinks = [
 ]
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
-        setScrolled(true)
+        setScrolled(true);
       } else {
-        setScrolled(false)
+        setScrolled(false);
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault()
-    setIsOpen(false)
+  const handleClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault();
+    setIsOpen(false);
 
-    const element = document.querySelector(href)
+    const element = document.querySelector(href);
     if (element) {
       window.scrollTo({
         top: element.getBoundingClientRect().top + window.scrollY - 80,
         behavior: "smooth",
-      })
+      });
     }
-  }
+  };
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300",
-        scrolled ? "bg-background/95 backdrop-blur-sm shadow-sm" : "bg-transparent",
-      )}
-    >
-      <div className="container mx-auto px-4 py-3">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2">
-            <Code className="h-6 w-6 text-primary" />
-            <span className="font-bold text-xl">Abhyudaya</span>
-          </Link>
+    <>
+      <header
+        className={cn(
+          "fixed top-0 w-full z-50 transition-all duration-300",
+          scrolled
+            ? "bg-background/85 backdrop-blur-sm shadow-sm"
+            : "bg-transparent"
+        )}
+      >
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex items-center justify-between">
+            <Link href="/" className="flex items-center space-x-2">
+              <Code className="h-6 w-6 text-primary" />
+              <span className="font-bold text-xl">Abhyudaya</span>
+            </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center space-x-6">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleClick(e, link.href)}
+                  className="text-sm font-medium hover:text-primary transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
+              <div className="flex items-center gap-4">
+                <ThemeToggle />
+              </div>
+            </nav>
+
+            {/* Mobile Navigation Toggle and Theme Toggle */}
+            <div className="flex items-center gap-2 md:hidden">
+              <ThemeToggle />
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                aria-label="Toggle Menu"
+              >
+                {isOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Navigation Menu */}
+        <div
+          className={cn(
+            "fixed inset-0 bg-background z-40 pt-20 px-4 md:hidden transition-transform duration-300 ease-in-out",
+            isOpen ? "translate-x-0" : "translate-x-full"
+          )}
+        >
+          <nav className="flex flex-col space-y-4">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleClick(e, link.href)}
-                className="text-sm font-medium hover:text-primary transition-colors"
+                className="text-lg font-medium py-2 hover:text-primary transition-colors"
               >
                 {link.name}
               </a>
             ))}
-            <div className="flex items-center gap-4">
-              <ThemeToggle />
-              <Button size="sm">Join Us</Button>
-            </div>
           </nav>
-
-          {/* Mobile Navigation Toggle and Theme Toggle */}
-          <div className="flex items-center gap-2 md:hidden">
-            <ThemeToggle />
-            <button onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Menu">
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
         </div>
-      </div>
-
-      {/* Mobile Navigation Menu */}
-      <div
-        className={cn(
-          "fixed inset-0 bg-background z-40 pt-20 px-4 md:hidden transition-transform duration-300 ease-in-out",
-          isOpen ? "translate-x-0" : "translate-x-full",
-        )}
-      >
-        <nav className="flex flex-col space-y-4">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={(e) => handleClick(e, link.href)}
-              className="text-lg font-medium py-2 hover:text-primary transition-colors"
-            >
-              {link.name}
-            </a>
-          ))}
-          <Button className="mt-4">Join Us</Button>
-        </nav>
-      </div>
-    </header>
-  )
+      </header>
+    </>
+  );
 }
-
