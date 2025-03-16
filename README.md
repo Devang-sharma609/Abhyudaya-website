@@ -67,4 +67,3 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 3. Browse the events, RSVP for upcoming events, and view past events
 
 The events are now fetched from your Supabase database. Make sure to add, update, or remove events through the Supabase dashboard or API as needed.
-

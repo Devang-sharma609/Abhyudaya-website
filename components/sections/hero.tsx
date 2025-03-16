@@ -35,7 +35,7 @@ export default function Hero() {
               build impactful projects that solve real-world problems.
             </p>
             <p className="text-lg text-muted-foreground max-w-lg">
-              Through workshops, hackathons, and industry collaborations, we provide a platform for students to enhance
+              Through workshops, hackathons, and industry collaborations, we pr+ovide a platform for students to enhance
               their coding skills, explore emerging technologies, and prepare for successful careers in the tech
               industry.
             </p>

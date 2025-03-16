@@ -14,44 +14,40 @@ const leadershipData = [
     message: "I am proud to support Abhyudaya as they foster innovation and technical excellence among our students.",
     contact: {
       email: "vc@university.edu",
-      phone: "+1 (555) 123-4567",
-      linkedin: "https://linkedin.com/in/sarahjohnson",
+      linkedin: "https://www.linkedin.com/in/upinder-dhar-70740416/",
     },
   },
   {
-    name: "Prof. Michael Chen",
-    role: "Head of Department",
-    department: "Computer Science & Engineering",
+    name: "Dr. Anand Rajawat",
+    role: "Director  Professor",
+    department: "University Administration",
     image: "/placeholder.svg?height=300&width=300&text=Prof.+Chen",
     message: "Abhyudaya represents the innovative spirit we aim to cultivate in our department.",
     contact: {
       email: "hod.cse@university.edu",
-      phone: "+1 (555) 234-5678",
-      linkedin: "https://linkedin.com/in/michaelchen",
+      linkedin: "https://www.linkedin.com/in/anand-rajawat-84a5b139/",
     },
   },
   {
-    name: "Dr. Emily Rodriguez",
-    role: "Faculty Mentor",
+    name: "Prof. Avdesh Kumar Sharma",
+    role: "Club Coordiantor",
     department: "Computer Science & Engineering",
     image: "/placeholder.svg?height=300&width=300&text=Dr.+Rodriguez",
     message: "Working with Abhyudaya students has been one of the most rewarding experiences of my academic career.",
     contact: {
       email: "emily.rodriguez@university.edu",
-      phone: "+1 (555) 345-6789",
-      linkedin: "https://linkedin.com/in/emilyrodriguez",
+      linkedin: "https://www.linkedin.com/in/avdesh-kumar-sharma-a231152b2/",
     },
   },
   {
-    name: "Prof. David Kim",
-    role: "Club Coordinator",
-    department: "Information Technology",
+    name: "Dr. Kamal Borana",
+    role: "Faculty Mentor",
+    department: "Computer Science & Engineering",
     image: "/placeholder.svg?height=300&width=300&text=Prof.+Kim",
     message: "Abhyudaya provides a platform for students to apply classroom knowledge to real-world problems.",
     contact: {
       email: "david.kim@university.edu",
-      phone: "+1 (555) 456-7890",
-      linkedin: "https://linkedin.com/in/davidkim",
+      linkedin: "https://www.linkedin.com/in/dr-kamal-borana-397aa762/",
     },
   },
 ]
@@ -114,12 +110,6 @@ export default function Leadership() {
                       <Mail className="h-4 w-4 text-muted-foreground" />
                       <a href={`mailto:${leader.contact.email}`} className="text-sm hover:underline">
                         {leader.contact.email}
-                      </a>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Phone className="h-4 w-4 text-muted-foreground" />
-                      <a href={`tel:${leader.contact.phone}`} className="text-sm hover:underline">
-                        {leader.contact.phone}
                       </a>
                     </div>
                     <Button variant="ghost" size="sm" className="p-0 h-auto" asChild>

@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Code className="h-6 w-6 text-primary" />
-              <span className="font-bold text-xl">CodeCraft</span>
+              <span className="font-bold text-xl">Abhyudaya</span>
             </div>
             <p className="text-muted-foreground">
               Empowering students to innovate, create, and excel in the world of technology.
@@ -90,9 +90,10 @@ export default function Footer() {
             <h3 className="font-medium text-lg mb-4">Contact Us</h3>
             <address className="not-italic text-muted-foreground">
               <p>University Campus,</p>
-              <p>Innovation Building, Room 204</p>
-              <p className="mt-2">Email: contact@codecraft.edu</p>
-              <p>Phone: +1 (555) 123-4567</p>
+              <p>Cloud Clomputing Lab-1 &#40;CC-1&#41;</p>
+              <a href="mailto:abhyudaya@svvv.edu.in">
+              <p className="mt-2">Email: abhyudaya@svvv.edu.in</p>
+              </a>
             </address>
           </div>
         </div>

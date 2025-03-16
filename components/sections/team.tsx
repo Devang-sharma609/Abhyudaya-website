@@ -1,96 +1,98 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Github, Linkedin, Twitter } from "lucide-react"
+import { Github, Linkedin } from "lucide-react"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
 const teamMembers = [
   {
-    name: "Alex Johnson",
+    name: "Tanay Nagde",
     role: "President",
     specialization: "AI/ML",
     image: "/placeholder.svg?height=300&width=300&text=Alex",
     social: {
       github: "https://github.com/alexj",
       linkedin: "https://linkedin.com/in/alexj",
-      twitter: "https://twitter.com/alexj",
     },
   },
   {
-    name: "Priya Patel",
+    name: "Pranjal Birla",
     role: "Vice President",
     specialization: "Web Development",
     image: "/placeholder.svg?height=300&width=300&text=Priya",
     social: {
       github: "https://github.com/priyap",
       linkedin: "https://linkedin.com/in/priyap",
-      twitter: "https://twitter.com/priyap",
     },
   },
   {
-    name: "Marcus Chen",
-    role: "Technical Lead",
+    name: "Kushagra Rai",
+    role: "General Secretary",
     specialization: "Cloud Computing",
     image: "/placeholder.svg?height=300&width=300&text=Marcus",
     social: {
       github: "https://github.com/marcusc",
       linkedin: "https://linkedin.com/in/marcusc",
-      twitter: "https://twitter.com/marcusc",
     },
   },
   {
-    name: "Sophia Rodriguez",
-    role: "Event Coordinator",
+    name: "Ayush Maddhesiya",
+    role: "Technical Secretary",
     specialization: "UI/UX Design",
     image: "/placeholder.svg?height=300&width=300&text=Sophia",
     social: {
       github: "https://github.com/sophiar",
       linkedin: "https://linkedin.com/in/sophiar",
-      twitter: "https://twitter.com/sophiar",
     },
   },
   {
-    name: "James Wilson",
-    role: "Content Manager",
+    name: "Nawadha Jadiya",
+    role: "Development Lead",
     specialization: "Cybersecurity",
     image: "/placeholder.svg?height=300&width=300&text=James",
     social: {
       github: "https://github.com/jamesw",
       linkedin: "https://linkedin.com/in/jamesw",
-      twitter: "https://twitter.com/jamesw",
     },
   },
   {
-    name: "Aisha Khan",
-    role: "Outreach Coordinator",
+    name: "Akash Bais",
+    role: "Treasurer",
     specialization: "Mobile Development",
     image: "/placeholder.svg?height=300&width=300&text=Aisha",
     social: {
       github: "https://github.com/aishak",
       linkedin: "https://linkedin.com/in/aishak",
-      twitter: "https://twitter.com/aishak",
     },
   },
   {
-    name: "David Park",
-    role: "Treasurer",
+    name: "Dhwanil Bhawsar",
+    role: "Administrative Secretary",
     specialization: "Database Management",
     image: "/placeholder.svg?height=300&width=300&text=David",
     social: {
       github: "https://github.com/davidp",
       linkedin: "https://linkedin.com/in/davidp",
-      twitter: "https://twitter.com/davidp",
     },
   },
   {
-    name: "Emma Thompson",
-    role: "Secretary",
+    name: "Devang Sharma",
+    role: "Managing Lead",
     specialization: "Data Science",
     image: "/placeholder.svg?height=300&width=300&text=Emma",
     social: {
       github: "https://github.com/emmat",
       linkedin: "https://linkedin.com/in/emmat",
-      twitter: "https://twitter.com/emmat",
+    },
+  },
+  {
+    name: "Sneha Yadav",
+    role: "Content Lead",
+    specialization: "Data Science",
+    image: "/placeholder.svg?height=300&width=300&text=Emma",
+    social: {
+      github: "https://github.com/emmat",
+      linkedin: "https://linkedin.com/in/emmat",
     },
   },
 ]
@@ -162,15 +164,6 @@ export default function Team() {
                 >
                   <Linkedin className="h-5 w-5" />
                   <span className="sr-only">LinkedIn</span>
-                </a>
-                <a
-                  href={member.social.twitter}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  <Twitter className="h-5 w-5" />
-                  <span className="sr-only">Twitter</span>
                 </a>
               </CardFooter>
             </Card>

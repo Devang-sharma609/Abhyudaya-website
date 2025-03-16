@@ -23,8 +23,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 
 // Initialize Supabase client
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ""
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ""
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
 
 const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
@@ -35,9 +35,9 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey, {
 
 // Form schema
 const formSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  name: z.string().min(3, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
-  studentId: z.string().min(5, { message: "Student ID must be at least 5 characters." }),
+  student_id: z.string().min(9, { message: "Student ID must be at least 9 characters." }),
   department: z.string().min(2, { message: "Please enter your department." }),
   message: z.string().optional(),
 })
@@ -71,7 +71,7 @@ export default function Events() {
     defaultValues: {
       name: "",
       email: "",
-      studentId: "",
+      student_id: "NA",
       department: "",
       message: "",
     },
@@ -386,7 +386,7 @@ export default function Events() {
                     <FormItem>
                       <FormLabel>Full Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="John Doe" {...field} />
+                        <Input placeholder="John Doe" autoComplete="name" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -400,7 +400,7 @@ export default function Events() {
                     <FormItem>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
-                        <Input type="email" placeholder="john.doe@example.com" {...field} />
+                        <Input type="email" placeholder="john.doe@example.com" autoComplete="email" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -410,12 +410,12 @@ export default function Events() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <FormField
                     control={form.control}
-                    name="studentId"
+                    name="student_id"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Student ID</FormLabel>
                         <FormControl>
-                          <Input placeholder="12345678" {...field} />
+                          <Input placeholder="12345678" autoComplete="enrollment"{...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -429,7 +429,7 @@ export default function Events() {
                       <FormItem>
                         <FormLabel>Department</FormLabel>
                         <FormControl>
-                          <Input placeholder="Computer Science" {...field} />
+                          <Input placeholder="Computer Science" autoComplete=""{...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
