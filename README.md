@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="https://github.com/user-attachments/assets/f0c909be-accc-43b5-9b7a-e14d6b8dc1c8" alt="abhyudaya-website-banner" width="600">
+	<img src="https://github.com/user-attachments/assets/f0c909be-accc-43b5-9b7a-e14d6b8dc1c8" alt="abhyudaya-website-banner" width="800" height="400">
 </p>
 <p align="center">
 	<!-- Shields.io badges disabled, using skill icons. --></p>
