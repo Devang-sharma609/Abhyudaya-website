@@ -1,10 +1,14 @@
 import "@/app/globals.css"
+import { Montserrat } from 'next/font/google'
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
-import { Toaster } from "@/components/ui/sonner"
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  // You can specify which weights you need
+  weight: ['300', '400', '500', '600', '700'], 
+  variable: '--font-sans',
+})
 
 export const metadata: Metadata = {
   title: "Abhyudaya Coding Club",
@@ -18,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans`}>
+      <body className={`${montserrat.variable} font-sans`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -26,7 +30,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
-          <Toaster />
         </ThemeProvider>
       </body>
     </html>

@@ -48,17 +48,6 @@ const projects = [
     githubUrl: "https://github.com/Abhyudaya-SVVV/Inventory-Management-System",
     featured: true,
   },
-  // {
-  //   id: 4,
-  //   title: "Abhyudaya Mentorship Website",
-  //   description:
-  //     "A facial recognition-based attendance system for classrooms that automatically tracks student attendance.",
-  //   image: "/placeholder.svg?height=400&width=600&text=Smart+Attendance",
-  //   techStack: ["Python", "OpenCV", "TensorFlow", "Flask", "React"],
-  //   demoUrl: "https://abhyudayamentorship.vercel.app/",
-  //   githubUrl: "#",
-  //   featured: false,
-  // },
 ];
 
 export default function Projects() {
@@ -109,7 +98,17 @@ export default function Projects() {
         </p>
       </div>
 
-      <div className="relative">
+      <div className="relative px-12">
+        <Button
+          variant="link"
+          size="icon"
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 hover:bg-background"
+          onClick={prevSlide}
+        >
+          <ChevronLeft className="h-4 w-4" />
+          <span className="sr-only">Previous project</span>
+        </Button>
+
         <div className="overflow-hidden">
           <motion.div
             ref={carouselRef}
@@ -219,19 +218,9 @@ export default function Projects() {
         </div>
 
         <Button
-          variant="outline"
+          variant="link"
           size="icon"
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-background/80 hover:bg-background"
-          onClick={prevSlide}
-        >
-          <ChevronLeft className="h-4 w-4" />
-          <span className="sr-only">Previous project</span>
-        </Button>
-
-        <Button
-          variant="outline"
-          size="icon"
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-background/80 hover:bg-background"
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 hover:bg-background"
           onClick={nextSlide}
         >
           <ChevronRight className="h-4 w-4" />
