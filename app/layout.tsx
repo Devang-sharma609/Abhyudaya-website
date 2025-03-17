@@ -3,6 +3,7 @@ import { Montserrat } from 'next/font/google'
 import type { Metadata } from "next"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -33,6 +34,7 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
