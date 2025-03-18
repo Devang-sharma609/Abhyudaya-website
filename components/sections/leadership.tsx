@@ -13,7 +13,6 @@ const leadershipData = [
     image: "/vc.svg?height=300&width=300&text=Dr.+Upinder+Dhar",
     message: "I am proud to support Abhyudaya as they foster innovation and technical excellence among our students.",
     contact: {
-      email: "vc@university.edu",
       linkedin: "https://www.linkedin.com/in/upinder-dhar-70740416/",
     },
   },
@@ -21,10 +20,9 @@ const leadershipData = [
     name: "Dr. Anand Rajawat",
     role: "Director  Professor",
     department: "University Administration",
-    image: "/anand-rajavat.png",
+    image: "/anand-rajawat.jpg",
     message: "Abhyudaya represents the innovative spirit we aim to cultivate in our department.",
     contact: {
-      email: "hod.cse@university.edu",
       linkedin: "https://www.linkedin.com/in/anand-rajawat-84a5b139/",
     },
   },
@@ -35,7 +33,6 @@ const leadershipData = [
     image: "/avdhesh-kumar.svg?height=300&width=300&text=Dr.+Rodriguez",
     message: "Working with Abhyudaya students has been one of the most rewarding experiences of my academic career.",
     contact: {
-      email: "emily.rodriguez@university.edu",
       linkedin: "https://www.linkedin.com/in/avdesh-kumar-sharma-a231152b2/",
     },
   },
@@ -46,7 +43,6 @@ const leadershipData = [
     image: "/kamal-borana.svg?height=300&width=300&text=Prof.+Kim",
     message: "Abhyudaya provides a platform for students to apply classroom knowledge to real-world problems.",
     contact: {
-      email: "david.kim@university.edu",
       linkedin: "https://www.linkedin.com/in/dr-kamal-borana-397aa762/",
     },
   },
@@ -106,12 +102,6 @@ export default function Leadership() {
                     <p className="text-muted-foreground italic">"{leader.message}"</p>
                   </CardContent>
                   <CardFooter className="p-0 pt-4 flex flex-col items-start gap-2">
-                    <div className="flex items-center gap-2">
-                      <Mail className="h-4 w-4 text-muted-foreground" />
-                      <a href={`mailto:${leader.contact.email}`} className="text-sm hover:underline">
-                        {leader.contact.email}
-                      </a>
-                    </div>
                     <Button variant="ghost" size="sm" className="p-0 h-auto" asChild>
                       <a
                         href={leader.contact.linkedin}

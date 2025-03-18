@@ -20,7 +20,7 @@ export default function Home() {
           <Hero />
         </section>
         <section id="recruitment" className="bg-muted/50">
-          <Recruitment visible={SHOW_RECRUITMENT} posterSrc="/poster_"/>
+          <Recruitment visible={SHOW_RECRUITMENT} posterSrc="/recruitment.jpg"/>
         </section>
         <section id="domains" className="py-16 bg-muted/50">
           <Domains />

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ...existing code... -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <!-- ...existing code... -->
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <!-- ...existing code... -->
+        </div>
+        
+        <button class="menu-toggle" aria-label="Toggle navigation">
+            <span>☰</span>
+        </button>
+        
+        <ul class="navbar-nav">
+            <!-- ...existing code... -->
+        </ul>
+    </nav>
+    
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <button class="close-menu" aria-label="Close menu">✕</button>
+        <ul>
+            <!-- Duplicate your navigation links here -->
+        </ul>
+    </div>
+    
+    <!-- ...existing code... -->
+    
+    <!-- Add this before closing body tag -->
+    <script>
+        // Mobile menu toggle functionality
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.mobile-nav').classList.add('active');
+        });
+        
+        document.querySelector('.close-menu').addEventListener('click', function() {
+            document.querySelector('.mobile-nav').classList.remove('active');
+        });
+    </script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { useEffect, useState } from "react"
+import { motion, useAnimation } from "framer-motion"
 import { Github, Linkedin } from "lucide-react"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
@@ -8,96 +9,97 @@ const teamMembers = [
   {
     name: "Tanay Nagde",
     role: "President",
-    specialization: "AI/ML",
+    specialization: "MERN Developer",
     image: "/Tanay.JPG?height=300&width=300&text=Tanay Nagde",
     social: {
-      github: "https://github.com/alexj",
-      linkedin: "https://linkedin.com/in/alexj",
+      linkedin: "https://www.linkedin.com/in/tanay-nagde-17985b1a6/",
     },
   },
   {
     name: "Pranjal Birla",
     role: "Vice President",
-    specialization: "Web Development",
+    specialization: "MERN Developer",
     image: "/Pranjal.JPG?height=300&width=300&text=Pranjal Birla",
     social: {
-      github: "https://github.com/priyap",
-      linkedin: "https://linkedin.com/in/priyap",
+      linkedin: "https://www.linkedin.com/in/pranjal-birla/",
     },
   },
   {
     name: "Kushagra Rai",
     role: "General Secretary",
-    specialization: "Cloud Computing",
+    specialization: "MERN Developer",
     image: "/Kushagra.JPG?height=300&width=300&text=Kushagra Rai",
     social: {
-      github: "https://github.com/marcusc",
-      linkedin: "https://linkedin.com/in/marcusc",
+      linkedin: "https://www.linkedin.com/in/kushagra-raii/",
     },
   },
   {
     name: "Ayush Maddhesiya",
     role: "Technical Secretary",
-    specialization: "UI/UX Design",
+    specialization: "MERN Developer",
     image: "/Ayush.JPG?height=300&width=300&text=Ayush Maddhesiya",
     social: {
-      github: "https://github.com/sophiar",
-      linkedin: "https://linkedin.com/in/sophiar",
+      linkedin: "https://www.linkedin.com/in/ayush-maddhesiya/",
     },
   },
   {
     name: "Akash Bais",
     role: "Treasurer",
-    specialization: "Mobile Development",
+    specialization: "Backend Develeopment",
     image: "/Akash.JPG?height=300&width=300&text=Akash Bais",
     social: {
-      github: "https://github.com/aishak",
-      linkedin: "https://linkedin.com/in/aishak",
+      linkedin: "https://www.linkedin.com/in/bais-akash/",
     },
   },
   {
-    name: "Dhwanil Bhawsar",
+    name: "Dhwanil Bhavsar",
     role: "Administrative Secretary",
-    specialization: "Database Management",
-    image: "/Dhwanil.JPG?height=300&width=300&text=Dhwanil Bhawsar",
+    specialization: "Cinematography and Camera Choreography",
+    image: "/Dhwanil.JPG?height=300&width=300&text=Dhwanil Bhavsar",
     social: {
-      github: "https://github.com/davidp",
-      linkedin: "https://linkedin.com/in/davidp",
+      linkedin: "https://www.linkedin.com/in/dhwanilll/",
     },
   },
   {
     name: "Nawadha Jadiya",
     role: "Development Lead",
-    specialization: "Cybersecurity",
+    specialization: "Mobile Application Development",
     image: "/Nawadha.JPG?height=300&width=300&text=Nawadha Jadiya",
     social: {
-      github: "https://github.com/jamesw",
-      linkedin: "https://linkedin.com/in/jamesw",
+      linkedin: "https://www.linkedin.com/in/nawadha-jadiya-aab426253/",
     },
   },
   {
     name: "Devang Sharma",
     role: "Managing Lead",
-    specialization: "Data Science",
+    specialization: "Full Stack Development",
     image: "/Devang.JPG",
     social: {
-      github: "https://github.com/emmat",
-      linkedin: "https://linkedin.com/in/emmat",
+      linkedin: "https://www.linkedin.com/in/devang-sharma609/",
     },
   },
   {
     name: "Sneha Yadav",
     role: "Media & Content Lead",
-    specialization: "Data Science",
+    specialization: "Cotent Creation and PR Management",
     image: "/Sneha.JPG?height=300&width=300&text=Sneha Yadav",
     social: {
-      github: "https://github.com/emmat",
-      linkedin: "https://linkedin.com/in/emmat",
+      linkedin: "https://www.linkedin.com/in/sneha-yadav-02909021b/",
     },
   },
 ]
 
 export default function Team() {
+  const controls = useAnimation()
+  const [hasAnimated, setHasAnimated] = useState(false)
+
+  useEffect(() => {
+    if (!hasAnimated) {
+      controls.start("show")
+      setHasAnimated(true)
+    }
+  }, [controls, hasAnimated])
+
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -125,8 +127,7 @@ export default function Team() {
       <motion.div
         variants={container}
         initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.1 }}
+        animate={controls}
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
       >
         {teamMembers.map((member, index) => (
@@ -148,15 +149,6 @@ export default function Team() {
               </CardContent>
               <CardFooter className="p-4 pt-0 flex justify-start gap-4">
                 <a
-                  href={member.social.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  <Github className="h-5 w-5" />
-                  <span className="sr-only">GitHub</span>
-                </a>
-                <a
                   href={member.social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -173,4 +165,3 @@ export default function Team() {
     </div>
   )
 }
-

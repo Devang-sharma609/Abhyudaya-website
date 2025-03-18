@@ -90,12 +90,9 @@ export default function Navbar() {
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 aria-label="Toggle Menu"
+                className="focus:outline-none"
               >
-                {isOpen ? (
-                  <X className="h-6 w-6" />
-                ) : (
-                  <Menu className="h-6 w-6" />
-                )}
+                <Menu className="h-6 w-6" />
               </button>
             </div>
           </div>
@@ -108,7 +105,22 @@ export default function Navbar() {
             isOpen ? "translate-x-0" : "translate-x-full"
           )}
         >
-          <nav className="flex flex-col space-y-4">
+          {/* Prominent Close button for mobile navigation */}
+          <div className="flex justify-between items-center absolute top-0 left-0 right-0 px-4 py-3 border-b">
+            <Link href="/" className="flex items-center space-x-2">
+              <Code className="h-6 w-6 text-primary" />
+              <span className="font-bold text-xl">Abhyudaya</span>
+            </Link>
+            <button
+              onClick={() => setIsOpen(false)}
+              aria-label="Close Menu"
+              className="p-2 rounded-full hover:bg-muted focus:outline-none mobile-nav-close-button"
+            >
+              <X className="h-6 w-6" />
+            </button>
+          </div>
+          
+          <nav className="flex flex-col space-y-4 mt-8">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -122,6 +134,14 @@ export default function Navbar() {
           </nav>
         </div>
       </header>
+
+      {/* Full-screen backdrop for mobile menu */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-black/20 z-30 md:hidden"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
     </>
   );
 }

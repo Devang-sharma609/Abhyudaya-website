@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { Calendar, MapPin, Clock, Users, ChevronDown, ChevronUp } from "lucide-react"
+import { Calendar, MapPin, Clock, Users} from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -21,6 +21,7 @@ import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { useRouter } from "next/navigation"
 
 // Initialize Supabase client
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
@@ -37,7 +38,7 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey, {
 const formSchema = z.object({
   name: z.string().min(3, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
-  student_id: z.string().min(9, { message: "Student ID must be at least 9 characters." }),
+  student_id: z.string().min(0, { message: "Student ID must be at least 9 characters." }),
   department: z.string().min(2, { message: "Please enter your department." }),
   message: z.string().optional(),
 })
@@ -65,6 +66,7 @@ export default function Events() {
   const [events, setEvents] = useState<Event[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const router = useRouter()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -121,28 +123,35 @@ export default function Events() {
     setSubmitError(null)
 
     try {
-      const { data, error } = await supabase.from("event_registrations").insert([
+      // Step 1: Insert the registration record
+      const { data, error: insertError } = await supabase.from("event_registrations").insert([
         {
           event_id: selectedEvent.id,
           ...values,
         },
       ])
 
-      if (error) throw error
+      if (insertError) throw insertError
 
+      // Step 2: Update the registered count in the events table
+      const { error: updateError } = await supabase
+        .from("events")
+        .update({ registered: selectedEvent.registered + 1 })
+        .eq("id", selectedEvent.id)
+
+      if (updateError) throw updateError
+      
+      // Show success message
       setSubmitSuccess(true)
+      
+      // Step 3: Fetch fresh data from the database instead of updating local state
+      await fetchEvents()
+      
       setTimeout(() => {
         setIsDialogOpen(false)
         setSubmitSuccess(false)
         form.reset()
       }, 2000)
-
-      // Update the registered count for the event
-      const updatedEvent = {
-        ...selectedEvent,
-        registered: selectedEvent.registered + 1,
-      }
-      setEvents(events.map((event) => (event.id === selectedEvent.id ? updatedEvent : event)))
     } catch (error) {
       console.error("Error submitting form:", error)
       setSubmitError("An error occurred while submitting the form. Please try again.")
@@ -163,7 +172,7 @@ export default function Events() {
   const pastEvents = events.filter((event) => event.is_past)
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto">
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">Events</h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -305,21 +314,9 @@ export default function Events() {
                     <CardFooter className="p-0 pt-6">
                       <Button
                         variant="outline"
-                        onClick={() => toggleExpand(event.id)}
+                        onClick={() => router.push(`/event/${event.id}/highlights`)}
                         className="flex items-center gap-2"
-                      >
-                        {expandedEvent === event.id ? (
-                          <>
-                            <span>Show Less</span>
-                            <ChevronUp className="h-4 w-4" />
-                          </>
-                        ) : (
-                          <>
-                            <span>Show Details</span>
-                            <ChevronDown className="h-4 w-4" />
-                          </>
-                        )}
-                      </Button>
+                      >View Highlights</Button>
                     </CardFooter>
                     {expandedEvent === event.id && (
                       <div className="mt-6 p-4 bg-muted/50 rounded-lg">
@@ -470,4 +467,3 @@ export default function Events() {
     </div>
   )
 }
-

@@ -20,7 +20,7 @@ export default function Recruitment({
     <section id="recruitment" className="p-10 bg-muted/50">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center gap-8">
-          <div className="w-full md:w-1/2 aspect-[1/1] bg-muted rounded-lg flex items-center justify-center overflow-hidden">
+          <div className="w-full md:w-1/2 bg-muted rounded-lg flex items-center justify-center overflow-hidden">
             {posterSrc ? (
               <Image 
                 src={posterSrc} 
@@ -39,10 +39,10 @@ export default function Recruitment({
           <div className="w-full md:w-1/2 space-y-4">
             <h2 className="text-3xl font-bold">RECRUITMENTS 2.0</h2>
             <p className="text-lg">
-              We're looking for passionate programmers to join our team. Whether you're a beginner or experienced coder, there's a place for you here.
+              We're looking for passionate people to join our team. Whether you're a beginner or experienced coder, there's a place for you here.
             </p>
             <p>
-              Applications are open from March 15 to April 15. Don't miss this opportunity to be part of an exciting tech community!
+              Applications are open till <b>April 1st week</b>. Don't miss this opportunity to be part of an exciting tech community!
             </p>
             <br/>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSdsJFDFldxvMZA8EVOJWvtUNWs70P9xt9wd1RLoUFkX-eWB3g/viewform?usp=sharing">
