@@ -20,8 +20,8 @@ const projects = [
     title: "Bus Management",
     description:
       "An AI-powered study assistant that helps students organize their notes, create flashcards, and prepare for exams.",
-    image: "/bus-tracking.svg?height=400&width=300&text=AI+Study+Assistant",
-    techStack: ["Python", "TensorFlow", "Flask", "React", "MongoDB"],
+    image: "/navgo.png?height=400&width=300&text=Bus+Management",
+    techStack: ["SpringBoot", "NEXT.js", "Tailwind", "PostrgreSQL", "Supabase", "React Native"],
     demoUrl: "https://navgo-svvv.vercel.app/",
     githubUrl: "https://github.com/Abhyudaya-SVVV/Bus-Tracking-System",
     featured: true,
@@ -31,7 +31,7 @@ const projects = [
     title: "NoteBin",
     description:
       "A mobile app that connects students on campus, facilitates event discovery, and enables resource sharing.",
-    image: "/placeholder.svg?height=400&width=600&text=Campus+Connect",
+    image: "/notebin.png?text=Notebin",
     techStack: ["NEXT.js", "Express", "Node.js"],
     demoUrl: "https://notebin-svvv.vercel.app/",
     githubUrl: "https://github.com/Abhyudaya-SVVV/notebin-svvv",
@@ -42,8 +42,8 @@ const projects = [
     title: "Inventory Management System",
     description:
       "A virtual laboratory simulator for conducting physics and chemistry experiments in a safe, virtual environment.",
-    image: "/placeholder.svg?height=400&width=600&text=Virtual+Lab",
-    techStack: ["Unity", "C#", "WebGL", "Three.js", "React"],
+    image: "/placeholder.svg?height=400&width=600&text=Inventory+Management",
+    techStack: ["SpringBoot", "Hibernate", "MERN"],
     demoUrl: "https://invento-amber.vercel.app/",
     githubUrl: "https://github.com/Abhyudaya-SVVV/Inventory-Management-System",
     featured: true,
@@ -98,11 +98,11 @@ export default function Projects() {
         </p>
       </div>
 
-      <div className="relative px-12">
+      <div className="relative">
         <Button
           variant="link"
-          size="icon"
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 hover:bg-background"
+          size="sm"
+          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-10 z-10 bg-background/80 hover:bg-background"
           onClick={prevSlide}
         >
           <ChevronLeft className="h-4 w-4" />
@@ -117,14 +117,14 @@ export default function Projects() {
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           >
             {projects.map((project, index) => (
-              <div key={project.id} className="min-w-full px-4">
-                <Card className="overflow-hidden h-full">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
-                    <div className="relative overflow-hidden group">
+              <div key={project.id} className="min-w-full">
+                <Card className="overflow-hidden h-full w-full min-h-[600px]">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 h-full">
+                    <div className="relative overflow-hidden group lg:col-span-8">
                       <img
                         src={project.image || "/placeholder.svg"}
                         alt={project.title}
-                        className="w-full h-full object-cover aspect-video lg:aspect-square transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-full object-cover aspect-video transition-transform duration-500 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
                         <Button
@@ -159,10 +159,10 @@ export default function Projects() {
                         </Button>
                       </div>
                     </div>
-                    <div className="p-6 flex flex-col">
-                      <CardHeader className="p-0 pb-4">
+                    <div className="p-4 flex flex-col lg:col-span-4">
+                      <CardHeader className="p-0 pb-3">
                         <div className="flex items-center justify-between">
-                          <CardTitle className="text-2xl">
+                          <CardTitle className="text-xl">
                             {project.title}
                           </CardTitle>
                           {project.featured && (
@@ -171,31 +171,35 @@ export default function Projects() {
                         </div>
                       </CardHeader>
                       <CardContent className="p-0 flex-grow">
-                        <CardDescription className="text-base mb-6">
+                        <CardDescription className="text-sm mb-4">
                           {project.description}
                         </CardDescription>
                         <div>
-                          <h4 className="text-sm font-medium mb-2">
+                          <h4 className="text-xs font-medium mb-1">
                             Tech Stack:
                           </h4>
-                          <div className="flex flex-wrap gap-2">
+                          <div className="flex flex-wrap gap-1">
                             {project.techStack.map((tech, i) => (
-                              <Badge key={i} variant="outline">
+                              <Badge
+                                key={i}
+                                variant="outline"
+                                className="text-xs py-0"
+                              >
                                 {tech}
                               </Badge>
                             ))}
                           </div>
                         </div>
                       </CardContent>
-                      <CardFooter className="p-0 pt-6 flex justify-between">
+                      <CardFooter className="p-0 pt-4 flex justify-between">
                         <Button variant="outline" size="sm" asChild>
                           <a
                             href={project.demoUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            <ExternalLink className="mr-2 h-4 w-4" />
-                            Live Demo
+                            <ExternalLink className="mr-1 h-3 w-3" />
+                            Demo
                           </a>
                         </Button>
                         <Button variant="outline" size="sm" asChild>
@@ -204,8 +208,8 @@ export default function Projects() {
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            <Github className="mr-2 h-4 w-4" />
-                            View Code
+                            <Github className="mr-1 h-3 w-3" />
+                            Code
                           </a>
                         </Button>
                       </CardFooter>
@@ -219,8 +223,8 @@ export default function Projects() {
 
         <Button
           variant="link"
-          size="icon"
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 hover:bg-background"
+          size="sm"
+          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-10 z-10 bg-background/80 hover:bg-background"
           onClick={nextSlide}
         >
           <ChevronRight className="h-4 w-4" />

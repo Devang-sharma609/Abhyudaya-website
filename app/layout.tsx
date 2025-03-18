@@ -1,30 +1,30 @@
-import "@/app/globals.css"
-import { Montserrat } from 'next/font/google'
-import type { Metadata } from "next"
-import { ThemeProvider } from "@/components/theme-provider"
-import { Analytics } from '@vercel/analytics/next';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import "@/app/globals.css";
+import { Fira_Code } from "next/font/google";
+import type { Metadata } from "next";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
-const montserrat = Montserrat({
-  subsets: ['latin'],
-  // You can specify which weights you need
-  weight: ['300', '400', '500', '600', '700'], 
-  variable: '--font-sans',
-})
+const firaCode = Fira_Code({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
   title: "Abhyudaya Coding Club",
-  description: "A coding club where students can learn, collaborate, and build amazing projects together.",
-}
+  description:
+    "A coding club where students can learn, collaborate, and build amazing projects together.",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${montserrat.variable} font-sans`}>
+    <html lang="en" className={firaCode.variable}>
+      <body>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -37,5 +37,5 @@ export default function RootLayout({
         <SpeedInsights />
       </body>
     </html>
-  )
+  );
 }

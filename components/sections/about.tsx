@@ -11,10 +11,10 @@ export default function About() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="relative rounded-xl overflow-hidden shadow-xl"
+          className="relative rounded-xl overflow-hidden shadow-xl h-[500px] md:h-[600px] w-[700px] md:w-[800px] -mx-20"
         >
           <img
-            src="/Club.JPG?height=600&width=800&text=Club+Team"
+            src="/Club.JPG?&text=Club+Team"
             alt="College Campus"
             className="w-ful h-full object-cover"
           />
@@ -25,11 +25,11 @@ export default function About() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="space-y-6"
+          className="space-y-6 mx-10"
         >
-          <h2 className="text-3xl md:text-4xl font-bold">About Abhyudaya</h2>
+          <h2 className="text-3xl md:text-4xl font-bold px-12">About Abhyudaya</h2>
 
-          <div className="space-y-4">
+          <div className="space-y-4 px-12">
             <h3 className="text-xl font-semibold">Our Vision</h3>
             <p className="text-muted-foreground">
               To create a vibrant community of tech enthusiasts who collaborate, innovate, and develop solutions that
@@ -37,7 +37,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-4 px-12">
             <h3 className="text-xl font-semibold">Our Mission</h3>
             <p className="text-muted-foreground">
               Abhyudaya is dedicated to fostering technical excellence and innovation among students through hands-on
@@ -45,7 +45,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-4 px-12">
             <h3 className="text-xl font-semibold">What We Do</h3>
             <ul className="space-y-2 text-muted-foreground list-disc pl-5">
               <li>Organize workshops, hackathons, and coding competitions</li>
@@ -60,4 +60,3 @@ export default function About() {
     </div>
   )
 }
-

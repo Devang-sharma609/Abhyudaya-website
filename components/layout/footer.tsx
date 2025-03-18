@@ -75,7 +75,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link href="#events" className="text-muted-foreground hover:text-primary transition-colors">
                   Workshops
                 </Link>
               </li>
