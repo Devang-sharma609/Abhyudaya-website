@@ -42,7 +42,7 @@ export default function Recruitment({
               We're looking for passionate people to join our team. Whether you're a beginner or experienced coder, there's a place for you here.
             </p>
             <p>
-              Applications are open from <b>March 17</b> to <b>24</b>. Don't miss this opportunity to be part of an exciting tech community!
+              Applications are open till <b>April 1st week</b>. Don't miss this opportunity to be part of an exciting tech community!
             </p>
             <br/>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSdsJFDFldxvMZA8EVOJWvtUNWs70P9xt9wd1RLoUFkX-eWB3g/viewform?usp=sharing">

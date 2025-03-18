@@ -1,0 +1,168 @@
+/* ...existing code... */
+
+/* Base responsive styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Make images responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive container */
+.container {
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+/* Responsive navigation */
+.navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.navbar-brand img {
+  max-height: 60px;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-item {
+  margin: 5px 0;
+}
+
+/* Hero section responsive */
+.hero-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 2rem;
+}
+
+.hero-content p {
+  font-size: 1rem;
+}
+
+/* Card and grid layouts */
+.card {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+/* Footer responsive */
+.footer {
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-content {
+  flex-direction: column;
+}
+
+.social-icons {
+  margin-top: 15px;
+}
+
+/* Media Queries */
+/* Tablet and above */
+@media (min-width: 768px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px 30px;
+  }
+
+  .navbar-nav {
+    flex-direction: row;
+    width: auto;
+  }
+
+  .nav-item {
+    margin: 0 10px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-content p {
+    font-size: 1.2rem;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .container {
+    max-width: 720px;
+  }
+  
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .container {
+    max-width: 960px;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+/* Improve touch interaction */
+.touch-element {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Card swipe improvements */
+.swipeable-card {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.swipeable-card.swiping {
+  transition: none;
+}
+
+/* ...existing code... */
