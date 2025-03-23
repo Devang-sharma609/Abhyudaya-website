@@ -147,8 +147,8 @@ export default function Projects() {
   return (
     <div className="container mx-auto px-4">
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 select-none">Our Projects</h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto select-none">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Projects</h2>
+        <p className="text-muted-foreground max-w-2xl mx-auto">
           Explore the innovative projects developed by our club members,
           showcasing their technical skills and creativity.
         </p>

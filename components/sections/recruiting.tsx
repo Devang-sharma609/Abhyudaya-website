@@ -37,11 +37,11 @@ export default function Recruitment({
             )}
           </div>
           <div className="w-full md:w-1/2 space-y-4">
-            <h2 className="text-3xl font-bold">RECRUITMENTS 2.0</h2>
-            <p className="text-lg">
+            <h2 className="text-3xl font-bold select-none">RECRUITMENTS 2.0</h2>
+            <p className="text-lg select-none">
               We're looking for passionate people to join our team. Whether you're a beginner or experienced coder, there's a place for you here.
             </p>
-            <p>
+            <p className="select-none">
               Applications are open till <b>April 1st week</b>. Don't miss this opportunity to be part of an exciting tech community!
             </p>
             <br/>
