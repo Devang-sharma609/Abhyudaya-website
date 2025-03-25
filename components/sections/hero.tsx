@@ -26,17 +26,17 @@ export default function Hero() {
             transition={{ duration: 0.5 }}
             className="space-y-6"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight select-none">
               Innovate. <span className="text-primary">Code.</span> Transform.
             </h1>
-            <p className="text-lg text-muted-foreground max-w-lg">
+            <p className="text-lg text-muted-foreground max-w-lg select-none">
               Abhyudaya is the premier coding club at our university, dedicated
               to fostering innovation and technical excellence. We bring
               together passionate students from diverse backgrounds to
               collaborate, learn, and build impactful projects that solve
               real-world problems.
             </p>
-            <p className="text-lg text-muted-foreground max-w-lg">
+            <p className="text-lg text-muted-foreground max-w-lg select-none">
               Through workshops, hackathons, and industry collaborations, we
               pr+ovide a platform for students to enhance their coding skills,
               explore emerging technologies, and prepare for successful careers
