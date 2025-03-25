@@ -21,10 +21,10 @@ const projects = [
     id: 1,
     title: "Bus Management",
     description:
-      "An AI-powered study assistant that helps students organize their notes, create flashcards, and prepare for exams.",
+      "A Bus Management System that helps students track their college buses in real time, ensuring timely arrivals and hassle-free commuting.",
     image: "/Bus_Img.png?height=400&width=600&text-Bus+Management",
     techStack: ["SpringBoot", "NEXT.js", "Tailwind", "PostrgreSQL", "Supabase", "React Native"],
-    demoUrl: "https://navgo-svvv.vercel.app/",
+    demoUrl: "https://navgo-svvvbus.vercel.app/",
     githubUrl: "https://github.com/Abhyudaya-SVVV/Bus-Tracking-System",
     featured: true,
   },
@@ -32,7 +32,7 @@ const projects = [
     id: 2,
     title: "NoteBin",
     description:
-      "A mobile app that connects students on campus, facilitates event discovery, and enables resource sharing.",
+      "A College Notes Hub where students can upload, share, and access study materials easily, making learning more collaborative and efficient.",
     image: "/Notebin_Img.png?height=400&width=600&text=Notebin",
     techStack: ["NEXT.js", "Express", "Node.js"],
     demoUrl: "https://notebin-svvv.vercel.app/",
@@ -43,7 +43,7 @@ const projects = [
     id: 3,
     title: "Inventory Management System",
     description:
-      "A virtual laboratory simulator for conducting physics and chemistry experiments in a safe, virtual environment.",
+      "An Inventory Management System that streamlines stock tracking, reduces shortages, and optimizes inventory control for seamless business operations.",
     image: "/SvvvInvento-Img.png?height=400&width=600&text=Inventory+Management",
     techStack: ["SpringBoot", "Hibernate", "MERN"],
     demoUrl: "https://invento-amber.vercel.app/",

@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { motion, useAnimation } from "framer-motion"
+import { useEffect, useRef } from "react"
+import { motion, useAnimation, useInView } from "framer-motion"
 import { Github, Linkedin } from "lucide-react"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
@@ -91,14 +91,14 @@ const teamMembers = [
 
 export default function Team() {
   const controls = useAnimation()
-  const [hasAnimated, setHasAnimated] = useState(false)
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
 
   useEffect(() => {
-    if (!hasAnimated) {
+    if (isInView) {
       controls.start("show")
-      setHasAnimated(true)
     }
-  }, [controls, hasAnimated])
+  }, [controls, isInView])
 
   const container = {
     hidden: { opacity: 0 },
@@ -125,6 +125,7 @@ export default function Team() {
       </div>
 
       <motion.div
+        ref={ref}
         variants={container}
         initial="hidden"
         animate={controls}

@@ -274,7 +274,7 @@ export default function Events() {
                     <img
                       src={event.image || "/placeholder.svg"}
                       alt={event.title}
-                      className="w-full h-full object-cover aspect-video md:aspect-square grayscale"
+                      className="w-full h-full object-cover aspect-video md:aspect-square"
                     />
                   </div>
                   <div className="md:col-span-2 p-6">

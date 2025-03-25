@@ -45,8 +45,8 @@ export default function EventHighlights({
         // Simulate loading images from directory
         // In production, you would fetch from actual storage
         const imagePaths = Array.from(
-          { length: 8 },
-          (_, i) => `/event-highlights/event-${params.id}/image${i + 1}.png`
+          { length: 1 },
+          (_, i) => `/event-highlights/event-${params.id}/image${i + 1}.jpg`
         );
         setImages(imagePaths);
       } catch (err) {
