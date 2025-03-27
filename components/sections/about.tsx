@@ -16,6 +16,7 @@ export default function About() {
           <img
             src="/Club.JPG?&text=Club+Team"
             alt="College Campus"
+            loading={'lazy'}
             className="w-full h-full object-cover object-center"
           />
         </motion.div>

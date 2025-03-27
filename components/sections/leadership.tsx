@@ -88,6 +88,7 @@ export default function Leadership() {
                   <img
                     src={leader.image || "/placeholder.svg"}
                     alt={leader.name}
+                    loading={'lazy'}
                     className="w-full h-full object-cover aspect-square"
                   />
                 </div>

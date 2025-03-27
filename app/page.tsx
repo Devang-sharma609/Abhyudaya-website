@@ -13,7 +13,7 @@ import { SHOW_RECRUITMENT } from "@/components/sections/recruiting"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="main-div min-h-screen bg-background overflow-auto scrollbar-hide">
       <Navbar />
       <main>
         <section id="home">

@@ -206,6 +206,7 @@ export default function Events() {
                     <img
                       src={event.image || "/placeholder.svg"}
                       alt={event.title}
+                      loading={'lazy'}
                       className="w-full h-full object-cover aspect-video md:aspect-square"
                     />
                   </div>
@@ -274,6 +275,7 @@ export default function Events() {
                     <img
                       src={event.image || "/placeholder.svg"}
                       alt={event.title}
+                      loading={'lazy'}
                       className="w-full h-full object-cover aspect-video md:aspect-square"
                     />
                   </div>

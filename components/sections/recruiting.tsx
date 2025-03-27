@@ -26,7 +26,8 @@ export default function Recruitment({
                 src={posterSrc} 
                 alt="Recruitment Poster" 
                 width={600} 
-                height={600} 
+                height={600}
+                loading={'lazy'}
                 className="w-full h-auto object-cover"
               />
             ) : (
