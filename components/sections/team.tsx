@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import { useMemo } from "react";
 import { motion, useAnimation, useInView } from "framer-motion"
 import { Github, Linkedin } from "lucide-react"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -90,7 +91,7 @@ const teamMembers = [
 ]
 
 export default function Team() {
-  const controls = useAnimation()
+  const controls = useAnimation();
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
 
@@ -98,7 +99,12 @@ export default function Team() {
     if (isInView) {
       controls.start("show")
     }
-  }, [controls, isInView])
+  }, [isInView])
+
+  const animationVariants = useMemo(() => ({
+    hidden: { opacity: 0, y: -50 },
+    visible: { opacity: 1, y: 0 },
+  }), []);
 
   const container = {
     hidden: { opacity: 0 },
@@ -138,6 +144,7 @@ export default function Team() {
                 <img
                   src={member.image || "/placeholder.svg"}
                   alt={member.name}
+                  loading={'lazy'}
                   className="w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>

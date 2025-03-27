@@ -80,18 +80,6 @@ export default function Projects() {
     };
   }, []);
 
-  // const nextSlide = () => {
-  //   setCurrentIndex((prevIndex) =>
-  //     prevIndex === projects.length - 1 ? 0 : prevIndex + 1
-  //   );
-  // };
-
-  // const prevSlide = () => {
-  //   setCurrentIndex((prevIndex) =>
-  //     prevIndex === 0 ? projects.length - 1 : prevIndex - 1
-  //   );
-  // };
-
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === projects.length - 1 ? prevIndex : prevIndex + 1
@@ -197,6 +185,7 @@ export default function Projects() {
                       <img
                         src={project.image || "/placeholder.svg"}
                         alt={project.title}
+                        loading={'lazy'}
                         className="w-full h-full bg-cover bg-center aspect-video transition-transform duration-500 group-hover:scale-105"
                         draggable="false"
                       />
