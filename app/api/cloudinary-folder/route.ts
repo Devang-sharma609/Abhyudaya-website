@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { v2 as cloudinary } from 'cloudinary';
+import { createClient } from "@supabase/supabase-js";
 
 // Configure Cloudinary
 cloudinary.config({
@@ -18,18 +19,39 @@ export async function GET(request: NextRequest) {
   try {
     // Get the folder parameter from the URL
     const { searchParams } = new URL(request.url);
-    const folder = searchParams.get('folder');
+    const eventId = searchParams.get('folder');
 
-    if (!folder) {
+    if (!eventId) {
       return NextResponse.json(
-        { error: "Folder parameter is required" },
+        { error: "Event ID parameter is required" },
         { status: 400 }
       );
     }
 
+    // Get event title from Supabase
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.CLOUDINARY_API_SECRET || "";
+    const supabase = createClient(supabaseUrl, supabaseKey);
+    
+    const { data: event } = await supabase
+      .from("events")
+      .select("title")
+      .eq("id", eventId)
+      .single();
+    
+    if (!event) {
+      return NextResponse.json(
+        { error: "Event not found" },
+        { status: 404 }
+      );
+    }
+    
+    // Format title for folder name (remove spaces, lowercase)
+    const folderName = event.title.toLowerCase().replace(/\s+/g, '-');
+    
     // Query Cloudinary for images in the specified folder
     const result = await cloudinary.search
-      .expression(`resource_type:image AND folder=event-${folder}*`)
+      .expression(`resource_type:image AND folder=${folderName}*`)
       .sort_by('created_at', 'desc')
       .max_results(100)
       .execute();
