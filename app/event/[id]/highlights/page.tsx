@@ -1,5 +1,4 @@
-"use client";
-
+'use client'
 import { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
@@ -17,6 +16,12 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   },
 });
 
+// Add type for image data
+type CloudinaryImage = {
+  url: string;
+  id: string;
+};
+
 export default function EventHighlights({
   params,
 }: {
@@ -25,7 +30,9 @@ export default function EventHighlights({
   const [event, setEvent] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [images, setImages] = useState<string[]>([]);
+  const [images, setImages] = useState<CloudinaryImage[]>([]);
+  const [imagesLoading, setImagesLoading] = useState(true);
+  const [imagesError, setImagesError] = useState<string | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const router = useRouter();
 
@@ -42,13 +49,8 @@ export default function EventHighlights({
         if (error) throw error;
         setEvent(data);
 
-        // Simulate loading images from directory
-        // In production, you would fetch from actual storage
-        const imagePaths = Array.from(
-          { length: 1 },
-          (_, i) => `/event-highlights/event-${params.id}/image${i + 1}.jpg`
-        );
-        setImages(imagePaths);
+        // Fetch images from Cloudinary via our API route
+        fetchEventImages(params.id);
       } catch (err) {
         console.error("Error fetching event:", err);
         setError("Failed to load event details");
@@ -59,6 +61,44 @@ export default function EventHighlights({
 
     fetchEvent();
   }, [params.id]);
+
+  const fetchEventImages = async (eventId: string) => {
+    setImagesLoading(true);
+    setImagesError(null);
+    try {
+      const response = await fetch(`/api/cloudinary-folder?folder=${eventId}`);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      
+      if (data.images && data.images.length > 0) {
+        setImages(data.images);
+      } else {
+        // Fallback to the single image if no images found in Cloudinary
+        setImages([
+          { 
+            url: `/event-highlights/event-${eventId}/image1.jpg`, 
+            id: 'fallback-image' 
+          }
+        ]);
+      }
+    } catch (err) {
+      console.error("Error fetching images:", err);
+      setImagesError("Failed to load event images");
+      // Set fallback image
+      setImages([
+        { 
+          url: `/event-highlights/event-${eventId}/image1.jpg`, 
+          id: 'fallback-image' 
+        }
+      ]);
+    } finally {
+      setImagesLoading(false);
+    }
+  };
 
   const nextImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -112,10 +152,15 @@ export default function EventHighlights({
           <div className="relative overflow-hidden rounded-lg bg-background shadow-xl">
             {/* Image carousel */}
             <div className="aspect-[16/9] relative">
-              {images.length > 0 ? (
+              {imagesLoading ? (
+                <div className="w-full h-full flex flex-col items-center justify-center bg-muted">
+                  <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-primary mb-2"></div>
+                  <p className="text-muted-foreground">Loading images...</p>
+                </div>
+              ) : images.length > 0 ? (
                 <div className="w-full h-full relative">
                   <img
-                    src={images[currentImageIndex]}
+                    src={images[currentImageIndex].url}
                     alt={`Event highlight ${currentImageIndex + 1}`}
                     className="w-full h-full object-cover"
                     onError={(e) => {
@@ -161,7 +206,7 @@ export default function EventHighlights({
                 >
                   <div className="w-full h-full relative">
                     <img
-                      src={image}
+                      src={image.url}
                       alt={`Thumbnail ${index + 1}`}
                       className="w-full h-full object-cover"
                       onError={(e) => {
@@ -222,4 +267,4 @@ export default function EventHighlights({
       </div>
     </div>
   );
-}
+} 
