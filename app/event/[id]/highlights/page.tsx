@@ -66,18 +66,71 @@ export default function EventHighlights({
     setImagesLoading(true);
     setImagesError(null);
     try {
+      console.log('Fetching images for event:', eventId);
+      
+      // First check if Cloudinary is configured by making a test request
+      const testResponse = await fetch('/api/test');
+      if (!testResponse.ok) {
+        console.warn('API test endpoint not responding correctly');
+      } else {
+        console.log('API test endpoint responded correctly');
+      }
+      
       const response = await fetch(`/api/cloudinary-folder?folder=${eventId}`);
       
       if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        let errorMessage = `HTTP error! Status: ${response.status}`;
+        try {
+          const errorData = await response.json();
+          console.error('API error response:', errorData);
+          errorMessage = errorData.error || errorMessage;
+        } catch (e) {
+          console.error('Could not parse error response as JSON');
+        }
+        throw new Error(errorMessage);
       }
       
       const data = await response.json();
+      console.log('API response data:', data);
       
       if (data.images && data.images.length > 0) {
+        console.log(`Found ${data.images.length} images for event ${eventId}`);
         setImages(data.images);
       } else {
-        // Fallback to the single image if no images found in Cloudinary
+        console.log('No images found, using fallback');
+        
+        // Try to use event-specific fallback if we have event data
+        if (event && event.image) {
+          setImages([
+            { 
+              url: event.image, 
+              id: 'fallback-event-image' 
+            }
+          ]);
+        } else {
+          // Generic fallback
+          setImages([
+            { 
+              url: `/event-highlights/event-${eventId}/image1.jpg`, 
+              id: 'fallback-image' 
+            }
+          ]);
+        }
+      }
+    } catch (err) {
+      console.error("Error fetching images:", err);
+      setImagesError("Failed to load event images");
+      
+      // Try to use event-specific fallback if we have event data
+      if (event && event.image) {
+        setImages([
+          { 
+            url: event.image, 
+            id: 'fallback-event-image' 
+          }
+        ]);
+      } else {
+        // Generic fallback
         setImages([
           { 
             url: `/event-highlights/event-${eventId}/image1.jpg`, 
@@ -85,16 +138,6 @@ export default function EventHighlights({
           }
         ]);
       }
-    } catch (err) {
-      console.error("Error fetching images:", err);
-      setImagesError("Failed to load event images");
-      // Set fallback image
-      setImages([
-        { 
-          url: `/event-highlights/event-${eventId}/image1.jpg`, 
-          id: 'fallback-image' 
-        }
-      ]);
     } finally {
       setImagesLoading(false);
     }
