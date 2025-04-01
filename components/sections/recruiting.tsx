@@ -46,7 +46,7 @@ export default function Recruitment({
               Applications are open till <b>April 1st week</b>. Don't miss this opportunity to be part of an exciting tech community!
             </p>
             <br/>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdsJFDFldxvMZA8EVOJWvtUNWs70P9xt9wd1RLoUFkX-eWB3g/viewform?usp=sharing">
+            <a href="https://forms.gle/i1R3vUHrZNz8CESx8">
             <Button size="lg">Apply Now</Button>
             </a>
           </div>
