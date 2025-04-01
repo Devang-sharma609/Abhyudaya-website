@@ -35,16 +35,10 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Updated: Use anon key as fallback for service role key
+    // Get event title from Supabase
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
     const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || 
                         process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
-    
-    console.log('Supabase keys available:', {
-      url: supabaseUrl ? 'Set' : 'Not set',
-      service_role: process.env.SUPABASE_SERVICE_ROLE_KEY ? 'Set' : 'Not set',
-      anon_key: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ? 'Set' : 'Not set'
-    });
     
     if (!supabaseKey) {
       console.error('Missing Supabase credentials');
@@ -74,27 +68,28 @@ export async function GET(request: NextRequest) {
     
     if (!event) {
       return NextResponse.json(
-        { error: "Event not found" },
+        { error: `Event not found with ID: ${eventId}` },
         { status: 404 }
       );
     }
     
-    // Try to get images with direct folder name first
+    // Format title for folder name (remove spaces, lowercase)
+    const folderName = event.title.toLowerCase().replace(/\s+/g, '-');
+    console.log('Looking for folder:', folderName);
+    
+    // UPDATED: Look for images in event-highlights/[folder-name] structure
     try {
-      // Format title for folder name (remove spaces, lowercase)
-      const folderName = event.title.toLowerCase().replace(/\s+/g, '-');
-      console.log('Looking for folder:', folderName);
+      const fullFolderPath = `event-highlights/${folderName}`;
+      console.log('Searching Cloudinary path:', fullFolderPath);
       
-      // Query Cloudinary for images in the specified folder
       const result = await cloudinary.search
-        .expression(`resource_type:image AND folder=${folderName}`)
+        .expression(`resource_type:image AND folder=${fullFolderPath}`)
         .sort_by('created_at', 'desc')
         .max_results(100)
         .execute();
         
-      console.log(`Found ${result.resources?.length || 0} images in folder ${folderName}`);
+      console.log(`Found ${result.resources?.length || 0} images in folder ${fullFolderPath}`);
 
-      // Extract and return the image URLs
       const images = result.resources?.map((resource: any) => ({
         url: resource.secure_url,
         id: resource.public_id,
@@ -102,21 +97,20 @@ export async function GET(request: NextRequest) {
       
       return NextResponse.json({ images });
     } catch (error) {
-      console.error('Cloudinary error:', error);
+      console.error('Cloudinary search error:', error);
       
-      // Try a more generic approach - search for any folder containing event title
+      // Try fallback to direct folder name without event-highlights prefix
       try {
-        const searchTerm = event.title.toLowerCase().replace(/\s+/g, '-');
-        console.log('Trying alternative search for term:', searchTerm);
+        console.log('Trying fallback search for folder:', folderName);
         
         const result = await cloudinary.search
-          .expression(`resource_type:image AND public_id:*${searchTerm}*`)
+          .expression(`resource_type:image AND folder=${folderName}`)
           .sort_by('created_at', 'desc')
           .max_results(100)
           .execute();
           
-        console.log(`Found ${result.resources?.length || 0} images with search term ${searchTerm}`);
-  
+        console.log(`Found ${result.resources?.length || 0} images in fallback folder ${folderName}`);
+
         const images = result.resources?.map((resource: any) => ({
           url: resource.secure_url,
           id: resource.public_id,
@@ -126,7 +120,7 @@ export async function GET(request: NextRequest) {
           return NextResponse.json({ images });
         }
         
-        // If no images found, return empty array
+        // If no images found with either approach, return empty array
         return NextResponse.json({ images: [] });
       } catch (fallbackError) {
         console.error('All Cloudinary attempts failed:', fallbackError);
