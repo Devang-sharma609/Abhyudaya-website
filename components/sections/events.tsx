@@ -481,7 +481,7 @@ export default function Events() {
                         <FormLabel>Enrollment Number</FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="2XX00BTCSEXXXX"
+                            placeholder="NA if unavailable"
                             autoComplete="enrollment"
                             {...field}
                           />
