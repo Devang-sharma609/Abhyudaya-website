@@ -1,6 +1,3 @@
-"use client"
-
-import { motion } from "framer-motion"
 import { Mail, Phone, Linkedin } from "lucide-react"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -49,21 +46,6 @@ const leadershipData = [
 ]
 
 export default function Leadership() {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 },
-  }
-
   return (
     <div className="container mx-auto px-4">
       <div className="text-center mb-12">
@@ -73,15 +55,9 @@ export default function Leadership() {
         </p>
       </div>
 
-      <motion.div
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-6"
-      >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {leadershipData.map((leader, index) => (
-          <motion.div key={index} variants={item}>
+          <div key={index}>
             <Card className="h-full overflow-hidden">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="sm:col-span-1">
@@ -118,9 +94,9 @@ export default function Leadership() {
                 </div>
               </div>
             </Card>
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   )
 }
