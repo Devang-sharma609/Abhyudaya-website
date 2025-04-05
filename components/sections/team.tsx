@@ -1,9 +1,4 @@
-"use client"
-
-import { useEffect, useRef } from "react"
-import { useMemo } from "react";
-import { motion, useAnimation, useInView } from "framer-motion"
-import { Github, Linkedin } from "lucide-react"
+import { Linkedin } from "lucide-react"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
 const teamMembers = [
@@ -91,36 +86,6 @@ const teamMembers = [
 ]
 
 export default function Team() {
-  const controls = useAnimation();
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
-
-  useEffect(() => {
-    if (isInView) {
-      controls.start("show")
-    }
-  }, [isInView])
-
-  const animationVariants = useMemo(() => ({
-    hidden: { opacity: 0, y: -50 },
-    visible: { opacity: 1, y: 0 },
-  }), []);
-
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 },
-  }
-
   return (
     <div className="container mx-auto px-4">
       <div className="text-center mb-12">
@@ -130,15 +95,9 @@ export default function Team() {
         </p>
       </div>
 
-      <motion.div
-        ref={ref}
-        variants={container}
-        initial="hidden"
-        animate={controls}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-      >
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {teamMembers.map((member, index) => (
-          <motion.div key={index} variants={item}>
+          <div key={index}>
             <Card className="h-full overflow-hidden group">
               <div className="relative overflow-hidden">
                 <img
@@ -167,9 +126,9 @@ export default function Team() {
                 </a>
               </CardFooter>
             </Card>
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   )
 }
