@@ -52,16 +52,16 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey, {
 // Form schema
 const formSchema = z.object({
   name: z.string().min(3, { message: "Name must be at least 3 characters." }),
-  email: z.string().email({ message: "Please enter a valid email address." }),
+  email: z.string().email({ message: "Invalid email address." }),
   student_id: z
     .string()
-    .min(0, { message: "Enrollment No. must be at least 9 characters." }),
-  department: z.string().min(2, { message: "Please enter your department." }),
-  year_sem: z.string().min(2, { message: "Please enter your Year/Semester." }),
+    .min(0, { message: "Invalid Enrollment Number" }),
+  department: z.string().min(2, { message: "Required" }),
+  year_sem: z.string().min(2, { message: "Required" }),
   contact: z
     .string()
-    .min(10, { message: "Please enter a valid contact number." })
-    .max(15, { message: "Contact number is too long." }),
+    .min(10, { message: "Required" })
+    .max(15, { message: "Contact number is Invalid" }),
   message: z.string().optional(),
 });
 
