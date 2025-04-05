@@ -51,17 +51,42 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey, {
 
 // Form schema
 const formSchema = z.object({
-  name: z.string().min(3, { message: "Name must be at least 3 characters." }),
-  email: z.string().email({ message: "Invalid email address." }),
+  name: z
+    .string()
+    .min(3, { message: "Name must be at least 3 characters." })
+    .regex(/^[A-Za-z ]+$/, {
+      message: "Name can only contain letters and spaces.",
+    }),
+  email: z
+    .string()
+    .email({ message: "Invalid email address." })
+    .refine(
+      (email) =>
+        email.endsWith(".in") ||
+        email.endsWith("gmail.com") ||
+        email.endsWith("outlook.com"),
+      {
+        message: "Please use a valid email domain.",
+      }
+    ),
   student_id: z
     .string()
-    .min(0, { message: "Invalid Enrollment Number" }),
+    .min(0, { message: "Invalid Enrollment Number" })
+    .regex(/^[A-Za-z0-9]+$/, {
+      message: "Enrollment number can only contain letters and numbers.",
+    })
+    .or(z.literal("NA"))
+    .or(z.literal("na")),
   department: z.string().min(2, { message: "Required" }),
   year_sem: z.string().min(2, { message: "Required" }),
   contact: z
     .string()
     .min(10, { message: "Required" })
-    .max(15, { message: "Contact number is Invalid" }),
+    .max(15, { message: "Contact number is Invalid" })
+    .regex(/^(\+\d{1,3}[-\s]?)?(\d{10,12})$/, {
+      message:
+        "Please enter a valid phone number (10-12 digits with optional country code)",
+    }),
   message: z.string().optional(),
 });
 
@@ -421,7 +446,8 @@ export default function Events() {
               </div>
               <h3 className="text-lg font-medium">Registration Successful!</h3>
               <p className="text-muted-foreground">
-                Join the Whatsapp group of the respective event in the WhatsApp community.
+                Join the Whatsapp group of the respective event in the WhatsApp
+                community.
               </p>
               <div className="mt-4">
                 <Link href="https://chat.whatsapp.com/DVCuoraYRfG8ZGCthTu96s">
@@ -509,7 +535,7 @@ export default function Events() {
                     )}
                   />
                 </div>
-                
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <FormField
                     control={form.control}
@@ -518,10 +544,7 @@ export default function Events() {
                       <FormItem>
                         <FormLabel>Year/Semester</FormLabel>
                         <FormControl>
-                          <Input
-                            placeholder="2nd Year / 3rd Sem"
-                            {...field}
-                          />
+                          <Input placeholder="2nd Year / 3rd Sem" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
