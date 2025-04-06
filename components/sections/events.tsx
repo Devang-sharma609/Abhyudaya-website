@@ -313,13 +313,13 @@ export default function Events() {
                         </div>
                       </div>
                     </CardContent>
-                    {/*<CardFooter className="p-0 pt-6">
+                    <CardFooter className="p-0 pt-6">
                       <Button
                         variant="outline"
                         onClick={() => router.push(`/event/${event.id}/highlights`)}
                         className="flex items-center gap-2"
                       >View Highlights</Button>
-                    </CardFooter>*/}
+                    </CardFooter>
                     {expandedEvent === event.id && (
                       <div className="mt-6 p-4 bg-muted/50 rounded-lg">
                         <h4 className="font-medium mb-2">Event Highlights</h4>

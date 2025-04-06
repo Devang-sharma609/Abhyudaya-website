@@ -91,7 +91,14 @@ export async function GET(request: NextRequest) {
       console.log(`Found ${result.resources?.length || 0} images in folder ${fullFolderPath}`);
 
       const images = result.resources?.map((resource: any) => ({
-        url: resource.secure_url,
+        url: cloudinary.url(resource.public_id, {
+          secure: true,
+          format: 'auto',
+          quality: 'auto',
+          fetch_format: 'auto',
+          width: 'auto',
+          crop: 'scale'
+        }),
         id: resource.public_id,
       })) || [];
       
@@ -112,7 +119,14 @@ export async function GET(request: NextRequest) {
         console.log(`Found ${result.resources?.length || 0} images in fallback folder ${folderName}`);
 
         const images = result.resources?.map((resource: any) => ({
-          url: resource.secure_url,
+          url: cloudinary.url(resource.public_id, {
+            secure: true,
+            format: 'auto',
+            quality: 'auto',
+            fetch_format: 'auto',
+            width: 'auto',
+            crop: 'scale'
+          }),
           id: resource.public_id,
         })) || [];
         
