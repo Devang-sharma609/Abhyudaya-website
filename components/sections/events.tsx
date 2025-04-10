@@ -369,7 +369,7 @@ export default function Events() {
                 community.
               </p>
               <div className="mt-4">
-                <Link href="https://chat.whatsapp.com/DVCuoraYRfG8ZGCthTu96s">
+                <Link href="https://chat.whatsapp.com/B9IS0mWjtSH0iLzrXVINEV">
                   <Button size="lg">Community Link</Button>
                 </Link>
               </div>
