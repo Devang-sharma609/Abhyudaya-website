@@ -370,7 +370,7 @@ export default function Events() {
               </p>
               <div className="mt-4">
                 <Link href="https://chat.whatsapp.com/B9IS0mWjtSH0iLzrXVINEV">
-                  <Button size="lg">Community Link</Button>
+                  <Button size="lg">Join Community</Button>
                 </Link>
               </div>
             </div>
