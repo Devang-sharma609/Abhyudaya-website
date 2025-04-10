@@ -297,12 +297,12 @@ export default function Events() {
                           <MapPin className="h-5 w-5 text-muted-foreground" />
                           <span>{event.location}</span>
                         </div>
-                        <div className="flex items-center gap-2">
+{/*                         <div className="flex items-center gap-2">
                           <Users className="h-5 w-5 text-muted-foreground" />
                           <span>
                             {event.registered} / {event.capacity} registered
                           </span>
-                        </div>
+                        </div> */}
                       </div>
                     </CardContent>
                     <CardFooter className="p-0 pt-6">
