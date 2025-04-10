@@ -1,0 +1,14 @@
+.project-card {
+  /* Change transition duration from longer value to shorter */
+  transition: all 0.2s ease-out;
+  /* Alternatively, if using transform */
+  transition: transform 0.2s ease-out;
+}
+
+.project-card:hover {
+  /* Keep your existing hover effects, but they'll now happen faster */
+}
+
+.card-switch-animation {
+  animation-duration: 1; /* Reduce from likely 0.5s or higher */
+}

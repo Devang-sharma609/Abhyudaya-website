@@ -1,0 +1,315 @@
+/* Additional Responsive Styles */
+
+/* Fix for overflow issues on mobile */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Responsive Typography */
+h1 { font-size: clamp(1.8rem, 4vw, 3.5rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2.5rem); }
+h3 { font-size: clamp(1.2rem, 2.5vw, 2rem); }
+p { font-size: clamp(0.9rem, 1.5vw, 1.1rem); }
+
+/* Utility Classes for Responsive Design */
+.hide-on-mobile {
+  display: none;
+}
+
+.text-center-mobile {
+  text-align: center;
+}
+
+/* Mobile menu toggle button */
+.menu-toggle {
+  display: block;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 10px;
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.mobile-nav.active {
+  display: flex;
+}
+
+.mobile-nav .nav-item {
+  margin: 10px 0;
+}
+
+.mobile-nav .nav-link {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.close-menu {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Mobile navigation close button */
+.mobile-nav-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
+}
+
+.mobile-nav-close:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Improved Mobile Navigation Close Button */
+.mobile-nav-close-button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.mobile-nav-close-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
+}
+
+.mobile-nav-close-button:active {
+  transform: scale(0.95);
+}
+
+/* Responsive form elements */
+input, textarea, select, button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+/* Tablet and Desktop styles */
+@media (min-width: 768px) {
+  .hide-on-mobile {
+    display: block;
+  }
+  
+  .text-center-mobile {
+    text-align: inherit;
+  }
+  
+  .menu-toggle {
+    display: none;
+  }
+  
+  input, textarea, select, button {
+    width: auto;
+  }
+}
+
+/* Fix for flex layouts on mobile */
+@media (max-width: 767px) {
+  .flex-row-on-desktop {
+    flex-direction: column;
+  }
+  
+  .flex-item {
+    width: 100% !important;
+    margin: 10px 0;
+  }
+}
+
+/* About section responsive image */
+@media (max-width: 639px) {
+  /* For extra small screens */
+  [class*="about-image"] {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+  /* For small screens */
+  [class*="about-image"] {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Common mobile fixes for about section */
+  .about-section {
+    padding: 2rem 1rem;
+  }
+  
+  .about-section .grid {
+    gap: 2rem !important;
+  }
+}
+
+/* Project carousel responsive styles */
+@media (max-width: 640px) {
+  /* Carousel navigation buttons on small screens */
+  .carousel-nav-button {
+    width: 32px !important;
+    height: 32px !important;
+    background-color: rgba(255, 255, 255, 0.9) !important;
+  }
+  
+  /* Ensure projects cards are properly sized */
+  .project-card {
+    min-height: auto !important;
+  }
+  
+  /* Adjust carousel dots size on mobile */
+  .carousel-dot {
+    width: 8px !important;
+    height: 8px !important;
+  }
+}
+
+/* Project card responsive adjustments */
+@media (max-width: 767px) {
+  .project-image-container {
+    height: 200px !important;
+  }
+  
+  .project-card-content {
+    padding: 12px !important;
+  }
+}
+
+/* Handle image loading gracefully */
+img.loading {
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}
+
+img.loaded {
+  opacity: 1;
+}
+
+/* Enhanced project carousel swipe functionality */
+.carousel-card {
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Visual indicators for swipe direction */
+.swipe-hint-left::before,
+.swipe-hint-right::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 60px;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.swipe-hint-left::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.2), transparent);
+}
+
+.swipe-hint-right::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(0,0,0,0.2), transparent);
+}
+
+.swipe-active .swipe-hint-left::before,
+.swipe-active .swipe-hint-right::after {
+  opacity: 1;
+}
+
+/* Make sure swipe doesn't cause text selection */
+.carousel-card * {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Make images non-draggable to prevent interference with swipe */
+.carousel-card img {
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Hide navigation buttons on mobile but show on tablet and up */
+@media (max-width: 767px) {
+  /* Add swipe hint text for first-time users */
+  .carousel-container::after {
+    content: "Swipe to navigate →";
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    pointer-events: none;
+    animation: fadeOut 5s forwards;
+  }
+  
+  @keyframes fadeOut {
+    0%, 70% { opacity: 0.7; }
+    100% { opacity: 0; }
+  }
+
+  /* Add touch-friendly styles for close button */
+  .close-button {
+    padding: 0.75rem;
+    min-width: 44px;
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+  
+  /* Enhance mobile menu header area */
+  .mobile-menu-header {
+    position: sticky;
+    top: 0;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    z-index: 2;
+  }
+}
