@@ -505,20 +505,12 @@ export default function Events() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Department</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                          <FormControl>
-                            <SelectTrigger className="bg-white w-full">
-                              <SelectValue placeholder="Select your department" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent className="bg-white min-w-[200px]">
-                            {departments.map((dept) => (
-                              <SelectItem key={dept} value={dept} className="whitespace-normal">
-                                {dept}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
+                        <FormControl>
+                          <Input
+                            placeholder="Enter your department"
+                            {...field}
+                          />
+                        </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
