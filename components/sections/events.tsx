@@ -35,6 +35,13 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -57,28 +64,70 @@ const formSchema = z.object({
     .regex(/^[A-Za-z ]+$/, {
       message: "Name can only contain letters and spaces.",
     }),
-  email: z
+    email: z
     .string()
     .email({ message: "Invalid email address." })
-    .refine(
-      (email) =>
-        email.endsWith(".in") ||
-        email.endsWith("gmail.com") ||
-        email.endsWith("outlook.com"),
-      {
-        message: "Please use a valid email domain.",
-      }
-    ),
+    .refine((email) => email.includes("@"), {
+      message: "Email must contain '@'.",
+    })
+    .refine((email) => {
+      const parts = email.split("@");
+      if (parts.length !== 2) return false;
+  
+      const [localPart, domain] = parts;
+      const allowedDomains = ["gmail.com", "outlook.com"];
+  
+      return (
+        localPart.length > 0 &&
+        domain &&
+        (
+          domain.endsWith(".in") ||
+          domain.endsWith(".co") ||
+          allowedDomains.includes(domain)
+        )
+      );
+    }, {
+      message: "Please use a valid email domain (e.g., gmail.com, outlook.com, .in, .co) with proper format.",
+    }),
   student_id: z
     .string()
-    .min(0, { message: "Invalid Enrollment Number" })
+    .min(12, { message: "Invalid Enrollment Number" })
+    .max(16, { message: "Invalid Enrollment Number" })
     .regex(/^[A-Za-z0-9]+$/, {
       message: "Enrollment number can only contain letters and numbers.",
     })
     .or(z.literal("NA"))
-    .or(z.literal("na")),
+    .or(z.literal("na"))
+    .or(z.literal('Na')),
   department: z.string().min(2, { message: "Required" }),
-  year_sem: z.string().min(2, { message: "Required" }),
+  year_sem: z
+    .string()
+    .min(2, { message: "Required" })
+    .refine(
+      (value) => {
+        // Check if the string contains a "/"
+        if (!value.includes("/")) return false;
+        
+        // Split the string by "/"
+        const parts = value.split("/");
+        if (parts.length !== 2) return false;
+        
+        // Extract year and semester
+        const year = parseInt(parts[0].trim());
+        const semester = parseInt(parts[1].trim());
+        
+        // Check if year is between 1 and 5
+        if (isNaN(year) || year < 1 || year > 5) return false;
+        
+        // Check if semester is between 1 and 10
+        if (isNaN(semester) || semester < 1 || semester > 10) return false;
+        
+        return true;
+      },
+      {
+        message: "Invalid year/sem format",
+      }
+    ),
   contact: z
     .string()
     .min(10, { message: "Required" })
@@ -89,6 +138,20 @@ const formSchema = z.object({
     }),
   message: z.string().optional(),
 });
+
+// List of valid departments
+const departments = [
+  "Computer Science",
+  "Information Technology",
+  "Electronics & Communication",
+  "Electrical Engineering",
+  "Mechanical Engineering",
+  "Civil Engineering",
+  "Chemical Engineering",
+  "Aerospace Engineering",
+  "Biotechnology",
+  "Other"
+];
 
 type Event = {
   id: number;
@@ -339,7 +402,7 @@ export default function Events() {
       </Tabs>
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="sm:max-w-md max-h-[90vh] overflow-y-auto">
+        <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>RSVP for {selectedEvent?.title}</DialogTitle>
             <DialogDescription>
@@ -378,7 +441,7 @@ export default function Events() {
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-4"
+                className="space-y-4 w-full max-w-[550px] mx-auto"
               >
                 <FormField
                   control={form.control}
@@ -442,13 +505,20 @@ export default function Events() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Department</FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="Computer Science"
-                            autoComplete="department"
-                            {...field}
-                          />
-                        </FormControl>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <FormControl>
+                            <SelectTrigger className="bg-white w-full">
+                              <SelectValue placeholder="Select your department" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent className="bg-white min-w-[200px]">
+                            {departments.map((dept) => (
+                              <SelectItem key={dept} value={dept} className="whitespace-normal">
+                                {dept}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -463,7 +533,10 @@ export default function Events() {
                       <FormItem>
                         <FormLabel>Year/Semester</FormLabel>
                         <FormControl>
-                          <Input placeholder="2nd Year / 3rd Sem" {...field} />
+                          <Input 
+                            placeholder="Year/Sem" 
+                            {...field} 
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
